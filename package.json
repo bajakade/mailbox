@@ -1,0 +1,12 @@
+{
+  "name": "mailbox",
+  "version": "1.0.0",
+  "private": "true",
+  "workspaces": [
+    "web",
+    "backend"
+  ],
+  "repository": "https://github.com/bajakade/mailbox.git",
+  "author": "bajakade <80319320+bajakade@users.noreply.github.com>",
+  "license": "MIT"
+}
