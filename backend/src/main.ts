@@ -12,6 +12,8 @@ async function bootstrap() {
     type: VersioningType.URI
   })
 
+  app.setGlobalPrefix('api');
+
   const config = new DocumentBuilder()
     .setTitle('MBL Mail Api')
     .setDescription('My Mail API')
@@ -21,6 +23,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document);
 
-  await app.listen(3000);
+  await app.listen(8000);
 }
 bootstrap();
