@@ -1,25 +1,26 @@
-import Dropdown from "@/components/drop-down";
-import { FaEnvelope } from "react-icons/fa";
-import { ReactNode } from "react";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
-const Layout = ({ children }: {children: ReactNode}) => {
+import AppHeader from "@/components/header";
+import { ReactNode } from "react";
+import { fetchAllEmails } from "@/utils";
+
+const Layout = async ({ children }: {children: ReactNode}) => {
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery({
+    queryKey: ['mails'],
+    queryFn: fetchAllEmails,
+  })
+
     return (
       <div className="min-h-screen flex flex-col">
-        <header className="bg-gray-800 text-white flex justify-between items-center p-4">
-          <div className="flex items-center">
-            <img src="/logo-light.png" alt="Logo" className="h-8 w-8 mr-2" />
-            <span className="text-xl font-bold">Mail</span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <button className="focus:outline-none">
-              <FaEnvelope size={24} />
-            </button>
-            <Dropdown />
-          </div>
-        </header>
-        <main className="flex-grow p-4 bg-blue-300 text-black">
-          {children}
-        </main>
+         <HydrationBoundary state={dehydrate(queryClient)}>
+            <AppHeader />
+            <main className="flex-grow p-4 bg-blue-300 text-black">
+              {children}
+            </main>
+         </HydrationBoundary>
+        
       </div>
     );
   };
