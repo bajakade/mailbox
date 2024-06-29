@@ -22,7 +22,7 @@ export class MailsService {
   update(id: number, _: UpdateMailDto) {
     return this.prisma.mail.update({
       where: { id },
-      data: {},
+      data: {isRead: true},
     });
   }
 

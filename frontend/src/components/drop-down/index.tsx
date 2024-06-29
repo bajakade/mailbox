@@ -4,6 +4,7 @@ import { FaCog, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { Menu, Transition } from '@headlessui/react';
 
 import React from 'react';
+import { signOut } from "next-auth/react"
 
 const Dropdown = () => {
   return (
@@ -25,7 +26,7 @@ const Dropdown = () => {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="/profile"
+                  href="#"
                   className={`${
                     active ? 'bg-gray-100' : ''
                   } block px-4 py-2 text-sm text-gray-700`}
@@ -37,7 +38,7 @@ const Dropdown = () => {
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="/account"
+                  href="#"
                   className={`${
                     active ? 'bg-gray-100' : ''
                   } block px-4 py-2 text-sm text-gray-700`}
@@ -48,14 +49,14 @@ const Dropdown = () => {
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="/logout"
+                <button
+                  onClick={() => signOut()}
                   className={`${
                     active ? 'bg-gray-100' : ''
                   } block px-4 py-2 text-sm text-gray-700`}
                 >
                   <FaSignOutAlt className="mr-2 inline-block" /> Sign Out
-                </a>
+                </button>
               )}
             </Menu.Item>
           </div>
