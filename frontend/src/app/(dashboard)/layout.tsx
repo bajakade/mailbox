@@ -3,17 +3,22 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
+import { countUnread, fetchAllEmails } from "@/utils";
 
 import AppHeader from "@/components/header";
 import { ReactNode } from "react";
-import { fetchAllEmails } from "@/utils";
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ["mails"],
-    queryFn: fetchAllEmails,
+    queryFn: () => fetchAllEmails(),
+  });
+
+  await queryClient.prefetchQuery({
+    queryKey: ["mails", "unread"],
+    queryFn: () => countUnread(),
   });
 
   return (

@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { MailsService } from './mails.service';
 import { CreateMailDto } from './dto/create-mail.dto';
@@ -13,6 +14,7 @@ import { UpdateMailDto } from './dto/update-mail.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { MailEntity } from './entities/mail.entity';
 import { SkipThrottle } from '@nestjs/throttler';
+import { PaginationQueryDTO } from 'src/prisma/dto/paginate';
 
 @Controller('mails')
 @ApiTags('Mails')
@@ -28,8 +30,8 @@ export class MailsController {
   @Get()
   @ApiOkResponse({ type: MailEntity, isArray: true })
   @SkipThrottle()
-  findAll() {
-    return this.mailsService.findAll();
+  findAll(@Query() query: PaginationQueryDTO) {
+    return this.mailsService.findAll({ ...query });
   }
 
   @Get(':id')
@@ -48,5 +50,10 @@ export class MailsController {
   @ApiOkResponse({ type: MailEntity })
   remove(@Param('id') id: string) {
     return this.mailsService.remove(id);
+  }
+
+  @Get('unread/count')
+  unreadCount() {
+    return this.mailsService.countUread();
   }
 }

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useMessage } from "@/hooks/useMessage";
 
 export default function AppHeader() {
-  const { unread } = useMessage();
+  const { unread } = useMessage(1);
   return (
     <header className="bg-gray-800 text-white flex justify-between items-center p-4">
       <Link className="flex items-center" href="/dashboard">

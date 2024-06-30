@@ -1,7 +1,17 @@
+import {
+  PaginateFunction,
+  PaginatedResult,
+  PaginationQueryDTO,
+  paginator,
+} from 'src/prisma/dto/paginate';
+
 import { CreateMailDto } from './dto/create-mail.dto';
 import { Injectable } from '@nestjs/common';
+import { Mail } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UpdateMailDto } from './dto/update-mail.dto';
+
+const paginate: PaginateFunction = paginator({ perPage: 1 });
 
 @Injectable()
 export class MailsService {
@@ -11,8 +21,11 @@ export class MailsService {
     return this.prisma.mail.create({ data: createMailDto });
   }
 
-  findAll() {
-    return this.prisma.mail.findMany({});
+  findAll({
+    page,
+    perPage,
+  }: PaginationQueryDTO): Promise<PaginatedResult<Mail>> {
+    return paginate(this.prisma.mail, {}, { page, perPage });
   }
 
   findOne(id: string) {
@@ -28,5 +41,13 @@ export class MailsService {
 
   remove(id: string) {
     return `This action removes a #${id} mail`;
+  }
+
+  async countUread() {
+    const total = await this.prisma.mail.count({ where: { isRead: false } });
+    return {
+      totalUnread: total,
+      user: 'Bashir Ibrahim',
+    };
   }
 }

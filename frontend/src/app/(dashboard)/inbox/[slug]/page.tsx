@@ -16,16 +16,19 @@ export default function MailDetail({
   params: { slug: string };
 }) {
   const queryClient = useQueryClient();
-  const mails = useStore((state: any) => state.mails);
+  const {
+    mails,
+    meta: { page },
+  } = useStore((state: any) => state);
   const [email, setEmail] = React.useState<Message>();
 
   const mutation = useMutation({
-    mutationKey: ["mail", slug],
+    mutationKey: ["mails", slug],
     mutationFn: () => {
       return readEmail(slug);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["mails"] });
+      queryClient.invalidateQueries({ queryKey: ["mails", page] });
     },
   });
 
@@ -34,7 +37,8 @@ export default function MailDetail({
   }, []);
 
   React.useEffect(() => {
-    setEmail(mails.find((mail: Message) => mail.id == slug));
+    const found = mails.find((mail: Message) => mail.id == slug);
+    found && setEmail(found);
   }, [mails]);
 
   return (
