@@ -13,19 +13,20 @@ import { UsersModule } from './users/users.module';
     PrismaModule,
     UsersModule,
     MailsModule,
-    ThrottlerModule.forRoot([{
-      ttl: 60000,
-      limit: 5,
-    }]),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000,
+        limit: 5,
+      },
+    ]),
   ],
   controllers: [AppController],
   providers: [
     AppService,
     {
       provide: APP_GUARD,
-      useClass: ThrottlerGuard
-    }
-    
+      useClass: ThrottlerGuard,
+    },
   ],
 })
 export class AppModule {}

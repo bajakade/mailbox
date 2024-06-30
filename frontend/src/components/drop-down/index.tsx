@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { FaCog, FaSignOutAlt, FaUser } from 'react-icons/fa';
-import { Menu, Transition } from '@headlessui/react';
+import { FaCog, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { Menu, Transition } from "@headlessui/react";
 
-import React from 'react';
-import { signOut } from "next-auth/react"
+import React from "react";
+import { signOut } from "next-auth/react";
 
 const Dropdown = () => {
   return (
@@ -28,7 +28,7 @@ const Dropdown = () => {
                 <a
                   href="#"
                   className={`${
-                    active ? 'bg-gray-100' : ''
+                    active ? "bg-gray-100" : ""
                   } block px-4 py-2 text-sm text-gray-700`}
                 >
                   <FaUser className="mr-2 inline-block" /> Profile
@@ -40,7 +40,7 @@ const Dropdown = () => {
                 <a
                   href="#"
                   className={`${
-                    active ? 'bg-gray-100' : ''
+                    active ? "bg-gray-100" : ""
                   } block px-4 py-2 text-sm text-gray-700`}
                 >
                   <FaCog className="mr-2 inline-block" /> Account
@@ -52,7 +52,7 @@ const Dropdown = () => {
                 <button
                   onClick={() => signOut()}
                   className={`${
-                    active ? 'bg-gray-100' : ''
+                    active ? "bg-gray-100" : ""
                   } block px-4 py-2 text-sm text-gray-700`}
                 >
                   <FaSignOutAlt className="mr-2 inline-block" /> Sign Out

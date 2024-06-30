@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
-import { withAuth } from "next-auth/middleware"
+import { withAuth } from "next-auth/middleware";
 
 export default withAuth(
   function middleware(request) {
     const pathname = request.nextUrl.pathname;
-  
+
     // prevent browsing default page
     if (pathname.match(/^\/$/)) {
-      return NextResponse.redirect(new URL('/dashboard', request.url));
+      return NextResponse.redirect(new URL("/dashboard", request.url));
     }
   },
   {
@@ -15,6 +15,6 @@ export default withAuth(
       authorized: ({ token }) => !!token,
     },
   },
-)
+);
 
-export const config = { matcher: ['/:path*'] }
+export const config = { matcher: ["/:path*"] };

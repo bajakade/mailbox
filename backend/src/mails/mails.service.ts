@@ -16,13 +16,13 @@ export class MailsService {
   }
 
   findOne(id: number) {
-    return this.prisma.mail.findUnique({where: {id}});
+    return this.prisma.mail.findUnique({ where: { id } });
   }
 
   update(id: number, _: UpdateMailDto) {
     return this.prisma.mail.update({
       where: { id },
-      data: {isRead: true},
+      data: { isRead: true },
     });
   }
 

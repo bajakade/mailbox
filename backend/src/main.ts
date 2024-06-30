@@ -9,8 +9,8 @@ async function bootstrap() {
 
   app.enableVersioning({
     defaultVersion: '1',
-    type: VersioningType.URI
-  })
+    type: VersioningType.URI,
+  });
 
   app.setGlobalPrefix('api');
 
