@@ -15,18 +15,18 @@ export class MailsService {
     return this.prisma.mail.findMany({});
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.mail.findUnique({ where: { id } });
   }
 
-  update(id: number, _: UpdateMailDto) {
+  update(id: string, _: UpdateMailDto) {
     return this.prisma.mail.update({
       where: { id },
       data: { isRead: true },
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} mail`;
   }
 }

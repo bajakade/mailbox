@@ -24,7 +24,10 @@ export default function Inbox() {
 
       <div className="rounded-lg p-4 bg-blue-200 shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out cursor-pointer">
         <h1 className="text-3xl font-bold mb-4 mt-4">Messages</h1>
-        <ul className="divide-y divide-gray-200">
+        {data?.length === 0 ? (
+          <p className="text-red-800">You have no message </p>
+        ): (
+          <ul className="divide-y divide-gray-200">
           {data?.map((email) => (
             <Link href={`/inbox/${email.id}`} key={email.id}>
               <li className="flex justify-between items-center p-4 hover:bg-gray-100 cursor-pointer">
@@ -41,6 +44,8 @@ export default function Inbox() {
             </Link>
           ))}
         </ul>
+        )}
+        
       </div>
     </div>
   );

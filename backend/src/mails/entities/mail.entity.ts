@@ -3,7 +3,7 @@ import { Mail } from '@prisma/client';
 
 export class MailEntity implements Mail {
   @ApiProperty()
-  id: number;
+  id: string;
 
   @ApiProperty()
   subject: string;

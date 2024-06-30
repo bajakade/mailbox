@@ -15,11 +15,11 @@ export class UsersService {
     return this.prisma.user.findMany({});
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.prisma.user.findUnique({ where: { id } });
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(id: string, updateUserDto: UpdateUserDto) {
     return this.prisma.user.update({
       where: { id },
       data: {
@@ -28,7 +28,7 @@ export class UsersService {
     });
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} user`;
   }
 }

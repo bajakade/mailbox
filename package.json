@@ -10,6 +10,7 @@
     "build:backend": "yarn workspace backend build",
     "start:backed:dev": "yarn workspace backend start:dev",
     "start:backend:prod": "yarn workspace backend start:prod",
+    "lint:backend": "yarn workspace backend lint",
     "test:frontend": "yarn workspace web test",
     "test:backend": "yarn workspace backend test",
     "dev:frontend": "yarn workspace web dev",

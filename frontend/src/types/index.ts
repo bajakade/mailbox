@@ -1,5 +1,5 @@
 export type Message = {
-  id: number;
+  id: string;
   subject: string;
   content: string;
   isRead: boolean;

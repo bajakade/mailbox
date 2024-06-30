@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   email     String   @unique()
   firstName String
   lastName  String
@@ -25,7 +25,7 @@ model User {
 }
 
 model Mail {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   subject   String
   content   String
   isRead    Boolean  @default(false)

@@ -12,7 +12,7 @@ export async function fetchAllEmails(): Promise<Array<Message>> {
   return res.json();
 }
 
-export async function readEmail(id: number) {
+export async function readEmail(id: string) {
   const res = await fetch(`${apiServer}/v1/mails/${id}`, { method: "PATCH" });
   if (!res.ok) {
     throw new Error("Failed to fetch data");

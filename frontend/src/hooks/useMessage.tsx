@@ -1,6 +1,5 @@
 import { StoreProps, useStore } from "./useStore";
 
-import { Message } from "@/types";
 import React from "react";
 import { fetchAllEmails } from "@/utils";
 import { useQuery } from "@tanstack/react-query";

@@ -13,16 +13,16 @@ import { useStore } from "@/hooks/useStore";
 export default function MailDetail({
   params: { slug },
 }: {
-  params: { slug: number };
+  params: { slug: string };
 }) {
   const queryClient = useQueryClient();
   const mails = useStore((state: any) => state.mails);
   const [email, setEmail] = React.useState<Message>();
 
   const mutation = useMutation({
-    mutationKey: ["mail", +slug],
+    mutationKey: ["mail", slug],
     mutationFn: () => {
-      return readEmail(+slug);
+      return readEmail(slug);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["mails"] });

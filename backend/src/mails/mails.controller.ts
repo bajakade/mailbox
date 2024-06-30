@@ -12,6 +12,7 @@ import { CreateMailDto } from './dto/create-mail.dto';
 import { UpdateMailDto } from './dto/update-mail.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { MailEntity } from './entities/mail.entity';
+import { SkipThrottle } from '@nestjs/throttler';
 
 @Controller('mails')
 @ApiTags('Mails')
@@ -26,6 +27,7 @@ export class MailsController {
 
   @Get()
   @ApiOkResponse({ type: MailEntity, isArray: true })
+  @SkipThrottle()
   findAll() {
     return this.mailsService.findAll();
   }
@@ -33,18 +35,18 @@ export class MailsController {
   @Get(':id')
   @ApiOkResponse({ type: MailEntity })
   findOne(@Param('id') id: string) {
-    return this.mailsService.findOne(+id);
+    return this.mailsService.findOne(id);
   }
 
   @Patch(':id')
   @ApiOkResponse({ type: MailEntity })
   update(@Param('id') id: string, @Body() updateMailDto: UpdateMailDto) {
-    return this.mailsService.update(+id, updateMailDto);
+    return this.mailsService.update(id, updateMailDto);
   }
 
   @Delete(':id')
   @ApiOkResponse({ type: MailEntity })
   remove(@Param('id') id: string) {
-    return this.mailsService.remove(+id);
+    return this.mailsService.remove(id);
   }
 }
