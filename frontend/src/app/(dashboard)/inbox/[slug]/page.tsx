@@ -1,12 +1,13 @@
 "use client";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
 import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 import { Message } from "@/types";
 import React from "react";
 import { formatDate } from "@/utils/helpers";
 import { readEmail } from "@/utils";
-import { useMutation } from "@tanstack/react-query";
 import { useStore } from "@/hooks/useStore";
 
 export default function MailDetail({
@@ -14,6 +15,7 @@ export default function MailDetail({
 }: {
   params: { slug: number };
 }) {
+  const queryClient = useQueryClient();
   const mails = useStore((state: any) => state.mails);
   const [email, setEmail] = React.useState<Message>();
 
@@ -22,8 +24,8 @@ export default function MailDetail({
     mutationFn: () => {
       return readEmail(+slug);
     },
-    onSuccess: (data) => {
-      setEmail(data);
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["mails"] });
     },
   });
 

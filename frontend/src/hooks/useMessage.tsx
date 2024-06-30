@@ -1,11 +1,12 @@
+import { StoreProps, useStore } from "./useStore";
+
 import { Message } from "@/types";
 import React from "react";
 import { fetchAllEmails } from "@/utils";
 import { useQuery } from "@tanstack/react-query";
-import { useStore } from "./useStore";
 
 export const useMessage = () => {
-  const { mails, unread, setMails, setUnread } = useStore(
+  const { mails, unread, setMails, setUnread } = useStore<StoreProps>(
     (state: any) => state,
   );
 
