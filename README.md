@@ -58,7 +58,7 @@ Alternatively you can `right-click` on the `docker-compose.yml` file from vscode
 `yarn run start:dev`
 
 You should now be able visit the api swagger docs at http://localhost:8000/api/docs
-![Swagger docs](<Screenshot 2024-06-30 at 09.10.48.png>)
+![alt text](<assets/Screenshot 2024-06-30 at 09.10.48.png>)
 
 ### Frontend
 From within the frontend directory run the commands below
@@ -80,3 +80,7 @@ You should now be able visit the webapp http://localhost:3000. Use the below cre
 `email`: `bashhau@gmail.com`
 
 `password`: `Pass@123`
+
+![alt text](<assets/Screenshot 2024-06-30 at 09.13.38.png>)
+![alt text](<assets/Screenshot 2024-06-30 at 09.14.04.png>)
+![alt text](<assets/Screenshot 2024-06-30 at 09.14.24.png>)
