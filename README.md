@@ -58,7 +58,7 @@ Alternatively you can `right-click` on the `docker-compose.yml` file from vscode
 `yarn run start:dev`
 
 You should now be able visit the api swagger docs at http://localhost:8000/api/docs
-
+![Swagger docs](<Screenshot 2024-06-30 at 09.10.48.png>)
 
 ### Frontend
 From within the frontend directory run the commands below
