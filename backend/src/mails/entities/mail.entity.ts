@@ -1,22 +1,22 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { Mail } from "@prisma/client";
+import { ApiProperty } from '@nestjs/swagger';
+import { Mail } from '@prisma/client';
 
 export class MailEntity implements Mail {
-    @ApiProperty()
-    id: number;
-    
-    @ApiProperty()
-    subject: string;
+  @ApiProperty()
+  id: number;
 
-    @ApiProperty()
-    content: string;
+  @ApiProperty()
+  subject: string;
 
-    @ApiProperty()
-    isRead: boolean;
+  @ApiProperty()
+  content: string;
 
-    @ApiProperty()
-    createdAt: Date;
+  @ApiProperty()
+  isRead: boolean;
 
-    @ApiProperty()
-    readAt: Date;
+  @ApiProperty()
+  createdAt: Date;
+
+  @ApiProperty()
+  readAt: Date;
 }

@@ -1,12 +1,12 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateMailDto {
-    @ApiProperty()
-    subject: string;
+  @ApiProperty()
+  subject: string;
 
-    @ApiProperty()
-    content: string;
+  @ApiProperty()
+  content: string;
 
-    @ApiProperty({ required: false, default: false })
-    isRead?: boolean;
+  @ApiProperty({ required: false, default: false })
+  isRead?: boolean;
 }

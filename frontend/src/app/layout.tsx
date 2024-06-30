@@ -20,10 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <QueryProvider>
-        {children}
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryProvider>
+        <QueryProvider>
+          {children}
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryProvider>
       </body>
     </html>
   );

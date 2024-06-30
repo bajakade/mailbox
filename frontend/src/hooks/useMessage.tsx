@@ -5,19 +5,21 @@ import { useQuery } from "@tanstack/react-query";
 import { useStore } from "./useStore";
 
 export const useMessage = () => {
-   const {mails, unread, setMails, setUnread} = useStore((state: any) => state)
-    
-    const { data } = useQuery({
-        queryKey: ['mails'],
-        queryFn: () => fetchAllEmails(),
-    });
+  const { mails, unread, setMails, setUnread } = useStore(
+    (state: any) => state,
+  );
 
-    React.useEffect(() => {
-        if(data && Array.isArray(data)) {
-            setMails(data)
-            setUnread(data.filter(mail => !mail.isRead))
-        }
-    }, [data])
+  const { data } = useQuery({
+    queryKey: ["mails"],
+    queryFn: () => fetchAllEmails(),
+  });
 
-    return {all: mails, unread}
-}
+  React.useEffect(() => {
+    if (data && Array.isArray(data)) {
+      setMails(data);
+      setUnread(data.filter((mail) => !mail.isRead));
+    }
+  }, [data]);
+
+  return { all: mails, unread };
+};

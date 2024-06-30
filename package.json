@@ -3,9 +3,23 @@
   "version": "1.0.0",
   "private": "true",
   "workspaces": [
-    "web",
+    "frontend",
     "backend"
   ],
+  "scripts": {
+    "build:backend": "yarn workspace backend build",
+    "start:backed:dev": "yarn workspace backend start:dev",
+    "start:backend:prod": "yarn workspace backend start:prod",
+    "test:frontend": "yarn workspace web test",
+    "test:backend": "yarn workspace backend test",
+    "dev:frontend": "yarn workspace web dev",
+    "build:frontend": "yarn workspace web build",
+    "start:frontend": "yarn workspace web start",
+    "lint:frontend": "yarn workspace web lint",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\" --log-level error",
+    "lint": "yarn format && eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "test": "yarn lint && yarn test:frontend && yarn test:backend"
+  },
   "repository": "https://github.com/bajakade/mailbox.git",
   "author": "bajakade <80319320+bajakade@users.noreply.github.com>",
   "license": "MIT"
