@@ -28,13 +28,13 @@ export default function MailDetail({
       return readEmail(slug);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["mails", page] });
+      queryClient.invalidateQueries({ queryKey: ["mails"] });
     },
   });
 
   React.useEffect(() => {
     mutation.mutate();
-  }, []);
+  }, [slug]);
 
   React.useEffect(() => {
     const found = mails.find((mail: Message) => mail.id == slug);

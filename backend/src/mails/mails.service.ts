@@ -11,7 +11,7 @@ import { Mail } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UpdateMailDto } from './dto/update-mail.dto';
 
-const paginate: PaginateFunction = paginator({ perPage: 1 });
+const paginate: PaginateFunction = paginator({ perPage: 5 });
 
 @Injectable()
 export class MailsService {
@@ -43,7 +43,7 @@ export class MailsService {
     return `This action removes a #${id} mail`;
   }
 
-  async countUread() {
+  async summary() {
     const total = await this.prisma.mail.count({ where: { isRead: false } });
     return {
       totalUnread: total,

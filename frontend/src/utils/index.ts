@@ -28,6 +28,6 @@ export async function readEmail(id: string) {
 }
 
 export async function countUnread() {
-  const res = await fetch(`${apiServer}/v1/mails/unread/count`);
+  const res = await fetch(`${apiServer}/v1/mails/info/status`);
   return res.json();
 }

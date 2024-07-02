@@ -35,7 +35,7 @@ export const useMessage = (page: number) => {
   }, [data]);
 
   React.useEffect(() => {
-    totalUnread && setUnread(totalUnread);
+    typeof totalUnread === "number" && setUnread(totalUnread);
     user && setUser(user);
   }, [totalUnread]);
 

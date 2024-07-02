@@ -42,6 +42,7 @@ export class MailsController {
 
   @Patch(':id')
   @ApiOkResponse({ type: MailEntity })
+  @SkipThrottle()
   update(@Param('id') id: string, @Body() updateMailDto: UpdateMailDto) {
     return this.mailsService.update(id, updateMailDto);
   }
@@ -52,8 +53,8 @@ export class MailsController {
     return this.mailsService.remove(id);
   }
 
-  @Get('unread/count')
-  unreadCount() {
-    return this.mailsService.countUread();
+  @Get('info/status')
+  info() {
+    return this.mailsService.summary();
   }
 }
